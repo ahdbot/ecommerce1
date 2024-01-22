@@ -12,5 +12,7 @@ alert('اضيف المنتج الى عربة الشراء');
 
 })
 
+document.getElementById("copyright").innerHTML = " جميع الحقوق محفوظة سنة" + new Date().getFullYear();
+
 console.log("أهلا بكم في متجر عربي")
 console.log("أهلا بكم في متجر عربي")
