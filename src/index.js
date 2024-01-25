@@ -80,8 +80,76 @@ function calculateTotalPrice ()
 }
 
 document.getElementById("product-quantity")
+
+
+
+const citiesByCountry = {
+    sa : ['جدة','الرياض','مكة'],
+    eg : ['القاهرة','الاسكندرية'],
+    jo : ['الزرقاء' , 'عمان'],
+    sy : ['حلب','دمشق']
+}
+
+document.querySelectorAll('select[name="country"]').forEach(item => {
+
+item.addEventListener('change',() =>{
+   const country = item.value
+
+
+   const cities = citiesByCountry[country]
+
+   document.querySelectorAll('#paymentcities option').forEach(option => option.remove())
+
+
+   const firstOption = document.createElement('option')
+   const optionText = document.createTextNode('اختر المدينة')
+   firstOption.appendChild(optionText)
+   firstOption.setAttribute('value', '')
+   firstOption.setAttribute('disabled', 'true')
+   firstOption.setAttribute('selected', 'true')
+
+
+   const city_options = document.getElementById('paymentcities')
+   city_options.appendChild(firstOption)
+
+
+   cities.forEach(city => {
+    const newOption = document.createElement('option')
+    const optionText = document.createTextNode(city)
+    newOption.appendChild(optionText)
+    newOption.setAttribute('value', city)
+    city_options.appendChild(newOption)
+})
+})
+
+
+})
+// اخفاء واظهار البيانات الائتمانية
+
+document.querySelectorAll('#form-checkout input[name="payment-method"]').forEach(item => {
+item.addEventListener('change' , () => {
+
+    const paymentmathod = item.value;
+
+
+    const creditcardinput = document.querySelectorAll('#credit_card_info input');
+
+    if (paymentmathod === 'on_delivery') {
+        creditcardinput.forEach(input => {
+          input.style.display = 'none'
+
+        })
+    }
+
+    else {
+        creditcardinput.forEach(input => {
+            input.style.display = 'block'
+  
+          })
+    }
+
+})
+
+
+})
 document.getElementById("copyright").innerHTML = "جميع الحقوق محفوظة للمتجر سنة " + new Date().getFullYear();
-
-
-
-
