@@ -152,4 +152,8 @@ item.addEventListener('change' , () => {
 
 
 })
+
+
+
+
 document.getElementById("copyright").innerHTML = "جميع الحقوق محفوظة للمتجر سنة " + new Date().getFullYear();
