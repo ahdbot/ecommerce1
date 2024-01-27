@@ -32,8 +32,8 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/i,
-        exclude : /bootstrap\.min\.css$/i,
+        test: /\.(sa|sc|c)ss$/i,
+        exclude: /custom\.scss$/i,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -42,19 +42,21 @@ module.exports = {
             },
           },
           "css-loader",
+          "sass-loader",
         ],
       },
       {
-test : /bootstrap\.min\.css$/i,
-use : [
-  {
-    loader: MiniCssExtractPlugin.loader,
-    options: {
-      esModule: false,
-    },
-  },
-  "rtlcss-loader",
-]
+        test: /custom\.scss$/i,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              esModule: false,
+            },
+          },
+          "rtlcss-loader",
+          "sass-loader"
+        ],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -65,10 +67,10 @@ use : [
       },
       {
         test: /\.(svg|eot|woff|woff2|ttf)$/i,
-    
+
         type: 'asset/resource',
-        generator : {
-          filename : "./fonts/[name][ext]"
+        generator: {
+          filename: "./fonts/[name][ext]"
         }
       },
     ],
@@ -93,6 +95,10 @@ use : [
     new HtmlWebpackPlugin({
       filename: "search.html",
       template: "./src/search.html"
+    }),
+    new HtmlWebpackPlugin({
+      filename: "contact.html",
+      template: "./src/contact.html"
     }),
     new MiniCssExtractPlugin({
       filename: "css/style.css"

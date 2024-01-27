@@ -1,8 +1,11 @@
 
 window.bootstrap = require('bootstrap/dist/js/bootstrap.bundle.js');
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/scss/bootstrap.scss';
+import './sass/custom.scss';
 import "@fortawesome/fontawesome-free/js/all.min";
 import "./css/style.css";
+import './sass/style.scss'
 
 document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(item => new bootstrap.Tooltip(item))
 
@@ -14,23 +17,24 @@ document.querySelectorAll('.add-to-cart-btn').forEach(item => {
 
 
 
+document.querySelectorAll('.size-option input[type="radio"]').forEach(item => {
+    item.addEventListener('change', () => {
+        document.querySelectorAll('.size-option').forEach(i => {
+            i.classList.remove('active')
+        })
+        item.parentNode.parentNode.classList.add('active')
+    })
+})
+
 document.querySelectorAll('.color-option input[type="radio"]').forEach(item => {
     item.addEventListener('change', () => {
         document.querySelectorAll('.color-option').forEach(i => {
             i.classList.remove('active')
         })
-        item.parentNode.parentNode.classList.add('active');
+        item.parentNode.parentNode.classList.add('active')
     })
 })
-document.querySelectorAll('.size-option input[type="radio"]').forEach(item => {
-    item.addEventListener('change', () => {
-        document.querySelectorAll(".size-option").forEach(i => {
-            i.classList.remove('active')
-        })
-        item.parentNode.parentNode.classList.add('active');  
-    
-    })
-})
+
 
 // حساب سعر اجمالي المنتج
 document.querySelectorAll('[data-product-quantity]').forEach(item => {

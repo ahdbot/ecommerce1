@@ -29,6 +29,8 @@
     "html-webpack-plugin": "^5.6.0",
     "mini-css-extract-plugin": "^2.7.7",
     "rtlcss-loader": "^1.0.3",
+    "sass": "^1.70.0",
+    "sass-loader": "^14.0.0",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.15.1"
   }
